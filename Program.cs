@@ -23,7 +23,7 @@ namespace MacAddress
                 // An attempt to help filter out virtual network devices
                 .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback && nic.Description.StartsWith("VMware") == false && nic.Description.StartsWith("Hyper-V") == false && nic.Description.StartsWith("VirtualBox") == false))
             {
-                // Gets total usage of given NIC
+                // Gets total usage of a given NIC
                 macAddressesDict[nic.GetPhysicalAddress().ToString()] = nic.GetIPStatistics().BytesSent + nic.GetIPStatistics().BytesReceived;
             }
 
